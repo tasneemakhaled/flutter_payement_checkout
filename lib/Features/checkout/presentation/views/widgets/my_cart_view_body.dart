@@ -11,7 +11,7 @@ class MyCartViewBody extends StatelessWidget {
     return  Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(children: [
-        Image.asset('assets/images/cart.png',height: 300,),
+        Expanded(child: Image.asset('assets/images/cart.png',height: 300,)),
         SizedBox(height: 15,),
         OrderInfoItem(title: 'Order SubTotal',textStyle: Styles.style18,price: '42.97\$'),
         SizedBox(height: 3,),

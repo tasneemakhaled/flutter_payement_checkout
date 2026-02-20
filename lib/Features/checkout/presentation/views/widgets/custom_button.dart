@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_payement_checkout/Features/checkout/presentation/views/payment_details_view.dart';
 import 'package:flutter_payement_checkout/core/utils/styles.dart';
 
 class CustomButton extends StatelessWidget {
@@ -15,7 +16,11 @@ class CustomButton extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(16))
         ),
         
-        onPressed: (){}, child: Text('Complete Payement',style: Styles.style22,),),
+        onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context){
+            return PaymentDetailsView();
+          }));
+        }, child: Text('Complete Payement',style: Styles.style22,),),
     );
   }
 }
