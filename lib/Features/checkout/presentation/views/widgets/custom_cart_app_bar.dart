@@ -6,7 +6,9 @@ class CustomCartAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(title: Text('My Cart',style: Styles.style25),centerTitle: true,);
+    return AppBar(
+      leading: Icon(Icons.arrow_back),
+      title: Text('My Cart',style: Styles.style25),centerTitle: true,);
     
   }
 }
