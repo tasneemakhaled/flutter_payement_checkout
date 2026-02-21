@@ -13,7 +13,7 @@ final List<String> methods=[
   'assets/images/credit_card.svg',
   'assets/images/paypal.svg',
 ];
-
+int activeIndex=0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,7 +24,14 @@ final List<String> methods=[
         itemBuilder: (context,index){
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: PaymentMethodItem(isActive: true, image: methods[index]),
+          child: GestureDetector(
+            onTap: (){
+              activeIndex=index;
+              setState(() {
+                
+              });
+            },
+            child: PaymentMethodItem(isActive: activeIndex==index, image: methods[index])),
         );
       }),
     );
