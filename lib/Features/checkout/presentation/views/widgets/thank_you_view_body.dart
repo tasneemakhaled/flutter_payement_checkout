@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_payement_checkout/Features/checkout/presentation/views/widgets/custom_dashed_line.dart';
+import 'package:flutter_payement_checkout/Features/checkout/presentation/views/widgets/thank_you_card.dart';
 
 class ThankYouViewBody extends StatelessWidget {
   const ThankYouViewBody({super.key});
@@ -11,26 +13,12 @@ class ThankYouViewBody extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
         
-          Container(
-             
-            decoration: ShapeDecoration(
-                 color: Color(0xffD9D9D9),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(20))),
-          ),
+          ThankYouCard(),
           Positioned(
             bottom: MediaQuery.sizeOf(context).height*.2+20,
             right: 28,
             left: 28,
-            child: Row(children: List.generate(30, (index){
-                return Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                    child: Container(
-                     height: 2,
-                      color: Color(0xffB8B8B8),),
-                  ),
-                );
-            })),
+            child: CustomDashedLine(),
           ),
           Positioned(
             bottom: MediaQuery.of(context).size.height*.2,
