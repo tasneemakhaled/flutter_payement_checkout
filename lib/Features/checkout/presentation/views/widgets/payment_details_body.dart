@@ -8,27 +8,36 @@ class PaymentDetailsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          PayementMethodsListView(),
-         CustomCreditCard(),
-         
-         SizedBox(
-        width: double.infinity,
-        height: 60,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xff34a853),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(16))
-          ),
+    return CustomScrollView(
+      slivers:[
+SliverToBoxAdapter(child: PayementMethodsListView()),
+         SliverToBoxAdapter(
           
-          onPressed: (){
-           
-          }, child: Text('Pay',style: Styles.style22,),),
+          child: CustomCreditCard()),
+         
+         SliverFillRemaining(
+          hasScrollBody: false,
+ child: Padding(
+   padding: const EdgeInsets.only(bottom: 8.0,left: 8,right: 8),
+   child: Align(
+    alignment: Alignment.bottomCenter,
+     child: SizedBox(
+             width: double.infinity,
+             height: 55,
+             child: ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Color(0xff34a853),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(16))
       ),
-        ],
-      ),
+      
+      onPressed: (){
+       
+      }, child: Text('Pay',style: Styles.style22,),),
+           ),
+   ),
+ ),
+         ),
+      ] 
     );
   }
 }
