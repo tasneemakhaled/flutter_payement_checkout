@@ -18,6 +18,21 @@ class ThankYouViewBody extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(20))),
           ),
           Positioned(
+            bottom: MediaQuery.sizeOf(context).height*.2+20,
+            right: 28,
+            left: 28,
+            child: Row(children: List.generate(30, (index){
+                return Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                    child: Container(
+                     height: 2,
+                      color: Color(0xffB8B8B8),),
+                  ),
+                );
+            })),
+          ),
+          Positioned(
             bottom: MediaQuery.of(context).size.height*.2,
             left: -20,
             child: CircleAvatar(backgroundColor: Colors.white,)),
