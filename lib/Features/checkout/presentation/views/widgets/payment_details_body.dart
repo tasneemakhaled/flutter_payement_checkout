@@ -3,9 +3,16 @@ import 'package:flutter_payement_checkout/Features/checkout/presentation/views/w
 import 'package:flutter_payement_checkout/Features/checkout/presentation/views/widgets/payement_methods_list_view.dart';
 import 'package:flutter_payement_checkout/core/utils/styles.dart';
 
-class PaymentDetailsBody extends StatelessWidget {
+class PaymentDetailsBody extends StatefulWidget {
   const PaymentDetailsBody({super.key});
 
+  @override
+  State<PaymentDetailsBody> createState() => _PaymentDetailsBodyState();
+}
+
+class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
+final GlobalKey<FormState> formKey=GlobalKey();
+AutovalidateMode autovalidateMode=AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -13,7 +20,7 @@ class PaymentDetailsBody extends StatelessWidget {
 SliverToBoxAdapter(child: PayementMethodsListView()),
          SliverToBoxAdapter(
           
-          child: CustomCreditCard()),
+          child: CustomCreditCard(formKey: formKey,autovalidateMode: autovalidateMode,)),
          
          SliverFillRemaining(
           hasScrollBody: false,
@@ -31,7 +38,14 @@ SliverToBoxAdapter(child: PayementMethodsListView()),
       ),
       
       onPressed: (){
-       
+       if(formKey.currentState!.validate()){
+        formKey.currentState!.save();
+       }else{
+        autovalidateMode=AutovalidateMode.always;
+        setState(() {
+          
+        });
+       }
       }, child: Text('Pay',style: Styles.style22,),),
            ),
    ),
