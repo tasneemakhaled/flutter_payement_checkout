@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_payement_checkout/Features/checkout/presentation/views/widgets/payment_details_body.dart';
 import 'package:flutter_payement_checkout/core/utils/styles.dart';
 
 class PaymentDetailsView extends StatelessWidget {
@@ -8,6 +9,7 @@ class PaymentDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(title: Text('Payment Details',style: Styles.style25,),centerTitle: true,),
+      body: PaymentDetailsBody(),
     );
   }
 }
