@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_payement_checkout/Features/checkout/presentation/views/widgets/order_info_item.dart';
 import 'package:flutter_payement_checkout/core/utils/styles.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ThankYouCard extends StatelessWidget {
   const ThankYouCard({
@@ -28,11 +29,31 @@ class ThankYouCard extends StatelessWidget {
               OrderInfoItem(title: 'Time', price: '10:15 AM', textStyle: Styles.style18),
               SizedBox(height: 10,),
               OrderInfoItem(title: 'To', price: 'Tasneem Khaled', textStyle: Styles.style18),
-              SizedBox(height: 20,),
-              Divider(),
-              SizedBox(height: 20,),
-              OrderInfoItem(title: 'Total', price: '50.97\$', textStyle: Styles.style18),
-               SizedBox(height: 20,),
+              Divider(height: 60,thickness: 2,),       
+              OrderInfoItem(title: 'Total', price: '50.97\$', textStyle: Styles.style25),
+               SizedBox(height: 10,),
+               Container(
+              
+                decoration: ShapeDecoration(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(16))),
+                  child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Row(
+             
+                    children: [
+                      SvgPicture.asset('assets/images/logo.svg'),
+                      
+                      Column(
+                        children: [
+                        Text('Credit Card',style: Styles.style18,),
+                        Text('         Master Card **78',style: Styles.style18,),
+                      ],)
+                    ],
+                  ),
+                ),
+              
+                ),
             ],),
         )
     );
