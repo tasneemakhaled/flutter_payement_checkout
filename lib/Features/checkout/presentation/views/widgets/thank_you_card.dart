@@ -73,7 +73,7 @@ class ThankYouCard extends StatelessWidget {
                   child: Center(child: Text('PAID',style: TextStyle(color: Color(0xff34a853),fontSize: 24,fontWeight: FontWeight.bold),)),
                 ),)
                 ],),
-                SizedBox(height: ((MediaQuery.sizeOf(context).height*.2+20)/2)-29,)
+                SizedBox(height: ((MediaQuery.sizeOf(context).height*.2+20)/2)-60,)
             ],),
         )
     );

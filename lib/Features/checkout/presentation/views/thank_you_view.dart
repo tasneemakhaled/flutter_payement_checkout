@@ -7,6 +7,8 @@ class ThankYouView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(leading: Icon(Icons.arrow_back),),
       body: ThankYouViewBody(),
     );
   }
