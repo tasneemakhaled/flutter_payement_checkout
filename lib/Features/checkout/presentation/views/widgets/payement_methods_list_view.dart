@@ -5,15 +5,16 @@ class PayementMethodsListView extends StatefulWidget {
   const PayementMethodsListView({super.key});
 
   @override
-  State<PayementMethodsListView> createState() => _PayementMethodsListViewState();
+  State<PayementMethodsListView> createState() =>
+      _PayementMethodsListViewState();
 }
 
 class _PayementMethodsListViewState extends State<PayementMethodsListView> {
-final List<String> methods=[
-  'assets/images/credit_card.svg',
-  'assets/images/paypal.svg',
-];
-int activeIndex=0;
+  final List<String> methods = [
+    'assets/images/credit_card.svg',
+    'assets/images/paypal.svg',
+  ];
+  int activeIndex = 0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -21,19 +22,22 @@ int activeIndex=0;
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: methods.length,
-        itemBuilder: (context,index){
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: GestureDetector(
-            onTap: (){
-              activeIndex=index;
-              setState(() {
-                
-              });
-            },
-            child: PaymentMethodItem(isActive: activeIndex==index, image: methods[index])),
-        );
-      }),
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: GestureDetector(
+              onTap: () {
+                activeIndex = index;
+                setState(() {});
+              },
+              child: PaymentMethodItem(
+                isActive: activeIndex == index,
+                image: methods[index],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

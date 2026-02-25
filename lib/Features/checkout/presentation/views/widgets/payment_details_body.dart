@@ -12,50 +12,59 @@ class PaymentDetailsBody extends StatefulWidget {
 }
 
 class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
-final GlobalKey<FormState> formKey=GlobalKey();
-AutovalidateMode autovalidateMode=AutovalidateMode.disabled;
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      slivers:[
-SliverToBoxAdapter(child: PayementMethodsListView()),
-         SliverToBoxAdapter(
-          
-          child: CustomCreditCard(formKey: formKey,autovalidateMode: autovalidateMode,)),
-         
-         SliverFillRemaining(
+      slivers: [
+        SliverToBoxAdapter(child: PayementMethodsListView()),
+        SliverToBoxAdapter(
+          child: CustomCreditCard(
+            formKey: formKey,
+            autovalidateMode: autovalidateMode,
+          ),
+        ),
+
+        SliverFillRemaining(
           hasScrollBody: false,
- child: Padding(
-   padding: const EdgeInsets.only(bottom: 8.0,left: 8,right: 8),
-   child: Align(
-    alignment: Alignment.bottomCenter,
-     child: SizedBox(
-             width: double.infinity,
-             height: 55,
-             child: ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xff34a853),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(16))
-      ),
-      
-      onPressed: (){
-       if(formKey.currentState!.validate()){
-        formKey.currentState!.save();
-       }else{
-        Navigator.of(context).push(MaterialPageRoute(builder: (context){
-          return ThankYouView();
-        }));
-        autovalidateMode=AutovalidateMode.always;
-        setState(() {
-          
-        });
-       }
-      }, child: Text('Pay',style: Styles.style22,),),
-           ),
-   ),
- ),
-         ),
-      ] 
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 8.0, left: 8, right: 8),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: SizedBox(
+                width: double.infinity,
+                height: 55,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xff34a853),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(16),
+                    ),
+                  ),
+
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                    } else {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ThankYouView();
+                          },
+                        ),
+                      );
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                  child: Text('Pay', style: Styles.style22),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

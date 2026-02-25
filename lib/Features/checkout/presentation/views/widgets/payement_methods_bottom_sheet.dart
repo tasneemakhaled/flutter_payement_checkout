@@ -8,25 +8,27 @@ class PayementMethodsBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
       child: Column(
-       mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.min,
         children: [
           PayementMethodsListView(),
-         SizedBox(height: 20,),
+          SizedBox(height: 20),
           SizedBox(
-        width: double.infinity,
-        height: 60,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xff34a853),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(16))
+            width: double.infinity,
+            height: 60,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xff34a853),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadiusGeometry.circular(16),
+                ),
+              ),
+
+              onPressed: () {},
+              child: Text('Continue', style: Styles.style22),
+            ),
           ),
-          
-          onPressed: (){
-          
-          }, child: Text('Continue',style: Styles.style22,),),
-      ),
         ],
       ),
     );

@@ -12,31 +12,37 @@ class ThankYouViewBody extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-        
           ThankYouCard(),
           Positioned(
-            bottom: MediaQuery.sizeOf(context).height*.2+20,
+            bottom: MediaQuery.sizeOf(context).height * .2 + 20,
             right: 28,
             left: 28,
             child: CustomDashedLine(),
           ),
           Positioned(
-            bottom: MediaQuery.of(context).size.height*.2,
+            bottom: MediaQuery.of(context).size.height * .2,
             left: -20,
-            child: CircleAvatar(backgroundColor: Colors.white,)),
-              Positioned(
-            bottom: MediaQuery.of(context).size.height*.2,
+            child: CircleAvatar(backgroundColor: Colors.white),
+          ),
+          Positioned(
+            bottom: MediaQuery.of(context).size.height * .2,
             right: -20,
-            child: CircleAvatar(backgroundColor: Colors.white,)),
-           Positioned(
+            child: CircleAvatar(backgroundColor: Colors.white),
+          ),
+          Positioned(
             left: 0,
             right: 0,
             top: -30,
             child: CircleAvatar(
-              radius: 30, 
-              backgroundColor: Color(0xffD9D9D9),child: CircleAvatar(
+              radius: 30,
+              backgroundColor: Color(0xffD9D9D9),
+              child: CircleAvatar(
                 radius: 20,
-              backgroundColor: Color(0xff34A853),child: Icon(Icons.check,color: Colors.white,size: 40,),),))
+                backgroundColor: Color(0xff34A853),
+                child: Icon(Icons.check, color: Colors.white, size: 40),
+              ),
+            ),
+          ),
         ],
       ),
     );

@@ -14,17 +14,24 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: Color(0xff34a853),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(16))
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadiusGeometry.circular(16),
+          ),
         ),
-        
-        onPressed: (){
+
+        onPressed: () {
           // Navigator.of(context).push(MaterialPageRoute(builder: (context){
           //   return PaymentDetailsView();
           // }));
-          showModalBottomSheet(context: context, builder: (context){
-            return PayementMethodsBottomSheet();
-          });
-        }, child: Text('Complete Payement',style: Styles.style22,),),
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return PayementMethodsBottomSheet();
+            },
+          );
+        },
+        child: Text('Complete Payement', style: Styles.style22),
+      ),
     );
   }
 }

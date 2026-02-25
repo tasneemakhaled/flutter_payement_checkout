@@ -7,8 +7,11 @@ class PaymentDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(title: Text('Payment Details',style: Styles.style25,),centerTitle: true,),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Payment Details', style: Styles.style25),
+        centerTitle: true,
+      ),
       body: PaymentDetailsBody(),
     );
   }
