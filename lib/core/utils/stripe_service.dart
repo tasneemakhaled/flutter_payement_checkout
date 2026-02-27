@@ -17,6 +17,11 @@ Future initPayementSheet({required String paymentIntentClientSecret }) async{
 Future displayPayementSheet() async{
   Stripe.instance.presentPaymentSheet();
 }
+Future makePayement({required PaymentIntentInputModel paymentIntentInputModel})async{
+  var paymentIntentModel= await createPayemntIntent(paymentIntentInputModel: paymentIntentInputModel);
+  await initPayementSheet(paymentIntentClientSecret: paymentIntentModel.clientSecret!);
+  await displayPayementSheet();
+}
 
 }
 
