@@ -21,11 +21,13 @@ class StripeService {
     return paymentIntentModel;
   }
 
-  Future initPayementSheet({required String paymentIntentClientSecret}) async {
+  Future initPayementSheet({required String paymentIntentClientSecret,required String customerEphemeralKeySecret}) async {
     await Stripe.instance.initPaymentSheet(
       paymentSheetParameters: SetupPaymentSheetParameters(
         paymentIntentClientSecret: paymentIntentClientSecret,
         merchantDisplayName: 'tasneem',
+        customerEphemeralKeySecret: customerEphemeralKeySecret,
+        customerId: 'cus_U3goiBTckA2FH3',
       ),
     );
   }
@@ -36,12 +38,16 @@ class StripeService {
 
   Future makePayement({
     required PaymentIntentInputModel paymentIntentInputModel,
+    
   }) async {
     var paymentIntentModel = await createPayemntIntent(
       paymentIntentInputModel: paymentIntentInputModel,
+
     );
+    var ephemeralKeyModel=await createEphemeralKey(customerId: paymentIntentInputModel.customerId);
     await initPayementSheet(
       paymentIntentClientSecret: paymentIntentModel.clientSecret!,
+      customerEphemeralKeySecret: ephemeralKeyModel.secret!,
     );
     await displayPayementSheet();
   }
