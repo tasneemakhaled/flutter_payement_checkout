@@ -70,7 +70,7 @@ class StripeService {
     var response = await apiService.post(
       headers: {
         'Stripe-Version': '2023-10-16',
-        'Authorization': "Bearer $ApiKeys.secretKey,",
+        'Authorization': "Bearer ${ApiKeys.secretKey}",
       },
       url: 'https://api.stripe.com/v1/ephemeral_keys',
      token: ApiKeys.secretKey,
