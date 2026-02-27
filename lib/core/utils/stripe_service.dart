@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_payement_checkout/Features/checkout/data/models/payment_intent_input_model.dart';
 import 'package:flutter_payement_checkout/Features/checkout/data/models/payment_intent_model/payment_intent_model.dart';
@@ -30,6 +28,16 @@ Future makePayement({required PaymentIntentInputModel paymentIntentInputModel})a
   await initPayementSheet(paymentIntentClientSecret: paymentIntentModel.clientSecret!);
   await displayPayementSheet();
 }
+Future<PaymentIntentModel>createCustomer({required PaymentIntentInputModel paymentIntentInputModel})async{
+ var response =await apiService.post(
+  url: 'https://api.stripe.com/v1/customers',
+   token: ApiKeys.secretKey,
+    body: paymentIntentInputModel.toJson(),
+    contentType: Headers.formUrlEncodedContentType,
+    );
+  var  paymentIntentModel=PaymentIntentModel.fromJson(response.data);
+   return paymentIntentModel;
+  }
 
 }
 

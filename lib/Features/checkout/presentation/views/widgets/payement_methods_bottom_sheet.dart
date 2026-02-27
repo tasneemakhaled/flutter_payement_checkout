@@ -42,7 +42,7 @@ class PayementMethodsBottomSheet extends StatelessWidget {
                     ),
 
                     onPressed: () {
-                      PaymentIntentInputModel paymentIntentInputModel=PaymentIntentInputModel(amount:'100',currency: 'USD' );
+                      PaymentIntentInputModel paymentIntentInputModel=PaymentIntentInputModel(amount:'100',currency: 'USD' ,customerId: 'cus_U3goiBTckA2FH3',);
                       BlocProvider.of<PayementCubit>(context).makePayement(payementIntentInputModel: paymentIntentInputModel);
                     },
                     child: state is PayementLoading
