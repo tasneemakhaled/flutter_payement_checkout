@@ -10,15 +10,21 @@ part 'payement_state.dart';
 class PayementCubit extends Cubit<PayementState> {
   PayementCubit(this.checkoutRepo) : super(PayementInitial());
   final CheckoutRepo checkoutRepo;
-  Future makePayement({required PaymentIntentInputModel payementIntentInputModel })async{
+  Future makePayement({
+    required PaymentIntentInputModel payementIntentInputModel,
+  }) async {
     emit(PayementLoading());
-   var data= await checkoutRepo.makePayement(payementIntentInputModel: payementIntentInputModel);
-   data.fold((l){emit(PayementFailure(errorMessage: l.errorMessage));}, (r)=>emit(PayementSuccess()));
-   
+    var data = await checkoutRepo.makePayement(
+      payementIntentInputModel: payementIntentInputModel,
+    );
+    data.fold((l) {
+      emit(PayementFailure(errorMessage: l.errorMessage));
+    }, (r) => emit(PayementSuccess()));
   }
+
   @override
   void onChange(Change<PayementState> change) {
-   log(change.toString());
+    log(change.toString());
     super.onChange(change);
   }
 }

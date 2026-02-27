@@ -20,36 +20,49 @@ class PayementMethodsBottomSheet extends StatelessWidget {
           SizedBox(height: 20),
           BlocConsumer<PayementCubit, PayementState>(
             listener: (context, state) {
-              if(state is PayementSuccess){
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context){
-                  return ThankYouView();
-                }));
-              } if (state is PayementFailure){
+              if (state is PayementSuccess) {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ThankYouView();
+                    },
+                  ),
+                );
+              }
+              if (state is PayementFailure) {
                 Navigator.of(context).pop();
-           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
               }
             },
             builder: (context, state) {
               return SizedBox(
-                  width: double.infinity,
-                  height: 60,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff34a853),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusGeometry.circular(16),
-                      ),
+                width: double.infinity,
+                height: 60,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xff34a853),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadiusGeometry.circular(16),
                     ),
-
-                    onPressed: () {
-                      PaymentIntentInputModel paymentIntentInputModel=PaymentIntentInputModel(amount:'100',currency: 'USD' ,customerId: 'cus_U3goiBTckA2FH3',);
-                      BlocProvider.of<PayementCubit>(context).makePayement(payementIntentInputModel: paymentIntentInputModel);
-                    },
-                    child: state is PayementLoading
-                        ? CircularProgressIndicator()
-                        : Text('Continue', style: Styles.style22),
                   ),
-                
+
+                  onPressed: () {
+                    PaymentIntentInputModel paymentIntentInputModel =
+                        PaymentIntentInputModel(
+                          amount: '100',
+                          currency: 'USD',
+                          customerId: 'cus_U3goiBTckA2FH3',
+                        );
+                    BlocProvider.of<PayementCubit>(context).makePayement(
+                      payementIntentInputModel: paymentIntentInputModel,
+                    );
+                  },
+                  child: state is PayementLoading
+                      ? CircularProgressIndicator()
+                      : Text('Continue', style: Styles.style22),
+                ),
               );
             },
           ),

@@ -4,16 +4,19 @@ import 'package:flutter_payement_checkout/Features/checkout/data/repos/checkout_
 import 'package:flutter_payement_checkout/core/utils/errors/failure.dart';
 import 'package:flutter_payement_checkout/core/utils/stripe_service.dart';
 
-class CheckoutRepoImpl extends CheckoutRepo{
-  StripeService stripeService=StripeService();
+class CheckoutRepoImpl extends CheckoutRepo {
+  StripeService stripeService = StripeService();
   @override
-  Future<Either<Failure, void>> makePayement({required PaymentIntentInputModel payementIntentInputModel}) async{
+  Future<Either<Failure, void>> makePayement({
+    required PaymentIntentInputModel payementIntentInputModel,
+  }) async {
     try {
-  await stripeService.makePayement(paymentIntentInputModel: payementIntentInputModel);
-  return right(null);
-}  catch (e) {
-  return left(ServerFailure(errorMessage: e.toString()));
-}
+      await stripeService.makePayement(
+        paymentIntentInputModel: payementIntentInputModel,
+      );
+      return right(null);
+    } catch (e) {
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
   }
-
 }

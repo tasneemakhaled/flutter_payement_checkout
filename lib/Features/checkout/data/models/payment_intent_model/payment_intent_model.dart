@@ -89,10 +89,8 @@ class PaymentIntentModel {
       id: json['id'] as String?,
       object: json['object'] as String?,
       amount: json['amount'] as int?,
-     
+
       clientSecret: json['client_secret'] as String?,
-     
-     
     );
   }
 

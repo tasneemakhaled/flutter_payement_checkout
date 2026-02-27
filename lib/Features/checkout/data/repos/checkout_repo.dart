@@ -3,5 +3,7 @@ import 'package:flutter_payement_checkout/Features/checkout/data/models/payment_
 import 'package:flutter_payement_checkout/core/utils/errors/failure.dart';
 
 abstract class CheckoutRepo {
-  Future<Either<Failure,void>> makePayement({required PaymentIntentInputModel payementIntentInputModel});
+  Future<Either<Failure, void>> makePayement({
+    required PaymentIntentInputModel payementIntentInputModel,
+  });
 }
