@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_payement_checkout/Features/checkout/data/repos/checkout_repo_impl.dart';
+import 'package:flutter_payement_checkout/Features/checkout/presentation/manager/cubit/payement_cubit.dart';
 import 'package:flutter_payement_checkout/Features/checkout/presentation/views/payment_details_view.dart';
 import 'package:flutter_payement_checkout/Features/checkout/presentation/views/widgets/payement_methods_bottom_sheet.dart';
 import 'package:flutter_payement_checkout/core/utils/styles.dart';
@@ -26,7 +29,10 @@ class CustomButton extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             builder: (context) {
-              return PayementMethodsBottomSheet();
+              return BlocProvider(
+                create: (context) => PayementCubit(CheckoutRepoImpl()),
+                child: PayementMethodsBottomSheet(),
+              );
             },
           );
         },
