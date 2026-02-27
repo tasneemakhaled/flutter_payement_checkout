@@ -14,6 +14,9 @@ class StripeService {
 Future initPayementSheet({required String paymentIntentClientSecret }) async{
     Stripe.instance.initPaymentSheet(paymentSheetParameters: SetupPaymentSheetParameters(paymentIntentClientSecret:paymentIntentClientSecret,merchantDisplayName: 'tasneem' ));
 }
+Future displayPayementSheet() async{
+  Stripe.instance.presentPaymentSheet();
+}
 
 }
 
